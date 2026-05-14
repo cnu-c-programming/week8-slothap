@@ -1,0 +1,23 @@
+#include <stdio.h>
+
+int my_strcmp(const char *a, const char *b) {
+    // 두 문자열 중 하나라도 끝날 때까지 반복
+    while (*a != '\0' || *b != '\0') {
+        // 문자가 다르면 아스키코드 값의 차이 반환
+        if (*a != *b) {
+            return *a - *b;
+        }
+        a++;
+        b++;
+    }
+    // 끝까지 모두 같다면 0 반환
+    return 0;
+}
+
+int main() {
+    printf("%d\n", my_strcmp("abc", "abcd")); // c와 d 비교 (널 문자와 d 비교) -> 음수 반환 (-100)
+    printf("%d\n", my_strcmp("abc", "abc"));  // 모두 일치 -> 0 반환
+    printf("%d\n", my_strcmp("b", "a"));      // 첫 문자부터 b와 a 비교 -> 양수 반환 (1)
+    
+    return 0;
+}
